@@ -1,5 +1,7 @@
 version: 2.1
-
+orbs:
+  slack: circleci/slack@4.12.5
+  
 jobs:
   build:
     docker:
@@ -28,3 +30,11 @@ workflows:
   build-and-store-artifacts:
     jobs:
       - build
+
+      - slack/notify:
+          channel: general
+          event: fail
+          template: basic_fail_1
+          mentions: 
+            - username: "<@your_slack_username>"
+          content: "This is Milton Francom submitting the Slack assignment"
