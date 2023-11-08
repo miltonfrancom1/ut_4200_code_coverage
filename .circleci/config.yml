@@ -12,9 +12,6 @@ jobs:
           name: install npm
           command: npm install
       - run:
-          name: install jest
-          command: npm install jest
-      - run:
           name: run unit tests
           command: npm test --coverage
       - run:
