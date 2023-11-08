@@ -1,0 +1,27 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.7.4
+
+    steps:
+      - checkout
+      
+      - run:
+          name: install npm
+          command: npm install
+      - run:
+          name: run unit tests
+          command: npm test
+      - run:
+          name: generate code coverage report
+          command: npm run coverage
+  workflows:
+  build-and-store-artifacts:
+    jobs:
+      - build
+      - store_artifacts:
+          path: test-results
+      - store_artifacts:
+          path: coverage
