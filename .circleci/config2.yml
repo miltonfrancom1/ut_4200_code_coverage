@@ -1,0 +1,30 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14
+
+    steps:
+      - checkout
+      
+      - run:
+          name: install npm
+          command: npm install
+      - run:
+          name: run unit tests
+          command: npm test
+      - run:
+          name: generate code coverage report
+          command: npm run coverage
+          
+      - store_test_results:
+          path: .circleci/test-results
+      - store_artifacts:
+          path: .circleci/coverage
+          
+workflows:
+  version: 2.1
+  build-and-store-artifacts:
+    jobs:
+      - build
