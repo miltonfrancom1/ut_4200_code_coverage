@@ -22,7 +22,7 @@ workflows:
   build-and-store-artifacts:
     jobs:
       - build
-      - store_artifacts:
+      - store_artifacts1:
           path: test-results
-      - store_artifacts:
+      - store_artifacts2:
           path: coverage
