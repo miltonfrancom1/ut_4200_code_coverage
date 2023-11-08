@@ -2,8 +2,8 @@ version: 2.1
 
 jobs:
   build:
-    orbs:
-      node: circleci/node@5.1.0
+    docker:
+      - image: circleci/node:14
 
     steps:
       - checkout
