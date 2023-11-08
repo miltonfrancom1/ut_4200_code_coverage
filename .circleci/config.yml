@@ -12,8 +12,11 @@ jobs:
           name: install npm
           command: npm install
       - run:
+          name: install jest
+          command: npm install --save-dev jest
+      - run:
           name: run unit tests
-          command: npm test
+          command: npm test --coverage
       - run:
           name: generate code coverage report
           command: npm run coverage
