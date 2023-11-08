@@ -19,9 +19,9 @@ jobs:
           command: npm run coverage
           
       - store_test_results:
-          path: test-results
+          path: /.circleci/test-results
       - store_artifacts:
-          path: coverage
+          path: /.circleci/coverage
           
 workflows:
   version: 2.1
