@@ -18,10 +18,11 @@ jobs:
           name: generate code coverage report
           command: npm run coverage
   workflows:
-  build-and-store-artifacts:
-    jobs:
-      - build
-      - store_artifacts:
-          path: test-results
-      - store_artifacts:
+    version: 2.1
+    build-and-store-artifacts:
+      jobs:
+        - build
+        - store_artifacts:
+            path: test-results
+        - store_artifacts:
           path: coverage
