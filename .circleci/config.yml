@@ -24,14 +24,16 @@ jobs:
           path: .circleci/test-results
       - store_artifacts:
           path: .circleci/coverage
-          
+  slack/notify:
+      - context: slack-secrets
+      - channel: general
+      - message: "This is Milton Francom submitting the Slack assignment"   
+      
 workflows:
   version: 2.1
   build-and-store-artifacts:
     jobs:
       - build
 
-      - slack/notify:
-          context: slack-secrets
-          channel: general
-          message: "This is Milton Francom submitting the Slack assignment"
+      - slack/notify
+          
