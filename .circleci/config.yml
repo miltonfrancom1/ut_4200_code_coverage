@@ -6,10 +6,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:14
-
     steps:
       - checkout
-      
       - run:
           name: install npm
           command: npm install
@@ -24,10 +22,27 @@ jobs:
           path: .circleci/test-results
       - store_artifacts:
           path: .circleci/coverage
-  slackstuff:
-      context: slack-secrets
-      channel: general
-      message: "This is Milton Francom submitting the Slack assignment"   
+  notify:
+    docker:
+      - image: circleci/node:14
+    steps:
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "This is Milton Francom submitting the Slack assignment",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always  
       
 workflows:
   version: 2.1
@@ -35,5 +50,6 @@ workflows:
     jobs:
       - build
 
-      - slackstuff
+      - notify:
+          context: slack-secrets
           
