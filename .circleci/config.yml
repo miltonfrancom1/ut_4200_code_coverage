@@ -32,5 +32,6 @@ workflows:
       - build
 
       - slack/notify:
+          context: slack-secrets
           channel: general
           message: "This is Milton Francom submitting the Slack assignment"
