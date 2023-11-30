@@ -42,7 +42,7 @@ jobs:
                 }
               ]
             }
-    event: always  
+          event: always  
       
 workflows:
   version: 2.1
