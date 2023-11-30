@@ -25,9 +25,9 @@ jobs:
       - store_artifacts:
           path: .circleci/coverage
   slack/notify:
-      - context: slack-secrets
-      - channel: general
-      - message: "This is Milton Francom submitting the Slack assignment"   
+      context: slack-secrets
+      channel: general
+      message: "This is Milton Francom submitting the Slack assignment"   
       
 workflows:
   version: 2.1
