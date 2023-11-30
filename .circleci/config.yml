@@ -33,8 +33,4 @@ workflows:
 
       - slack/notify:
           channel: general
-          event: fail
-          template: basic_fail_1
-          mentions: 
-            - username: "<@your_slack_username>"
-          content: "This is Milton Francom submitting the Slack assignment"
+          message: "This is Milton Francom submitting the Slack assignment"
